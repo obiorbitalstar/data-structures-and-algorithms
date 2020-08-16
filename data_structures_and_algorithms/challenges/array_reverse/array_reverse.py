@@ -8,5 +8,6 @@ def reverse_array(arr):
         [list]: list in reversed form
     """
     # put your function implementation here
-    return arr
+    s =arr[::-1]
+    return s
 
