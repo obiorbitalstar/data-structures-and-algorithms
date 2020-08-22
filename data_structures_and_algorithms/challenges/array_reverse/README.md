@@ -14,3 +14,5 @@ a=a[::-1]
 this simply gose through the array from end to start one by one
 am not sure what big o notation is this
 i feel like its O(1) since its only one line  but if the size of the array effects the time it should be O(n)
+## Solution
+![img](../../../assests/reverse_array.jpg)
