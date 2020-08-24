@@ -68,6 +68,7 @@ class LinkedList:
         prev_node.next=new_node
 
 
+
     def length(self):
         current = self.head
         total = 0
@@ -141,4 +142,6 @@ if __name__ == "__main__":
     my_list.appened(5)
     print(my_list.display())
     print(my_list.kth_from_end(9))
+
+  
 

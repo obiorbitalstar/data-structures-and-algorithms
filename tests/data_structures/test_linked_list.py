@@ -11,11 +11,12 @@ def data():
 def test_empty(data):
     actual = data['list'].length()
     expected = 0
+
     assert actual == expected
 
 
 def test_insert(data):
-    actual = data['list'].appened(1)
+    actual = data['list'].appened(1)  
     expected = 1
     assert expected == data['list'].length()
 
@@ -32,6 +33,7 @@ def test_multi_input(data):
     data['list'].appened(2)
     data['list'].appened(3)
     data['list'].appened(4)
+
     actual = data['list'].length()
     expected = 4
     assert actual == expected
@@ -41,6 +43,7 @@ def test_finiding_value(data):
     data['list'].appened(1)
     data['list'].appened(2)
     data['list'].appened(3)
+
     actual = data['list'].includes(2)
     expected = True
     assert expected == actual
@@ -49,6 +52,7 @@ def test_finiding_value(data):
 def test_dont_exists(data):
     data['list'].appened(1)
     data['list'].appened(2)
+
     actual = data['list'].includes(5)
     expected = False
     assert expected == actual
