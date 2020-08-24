@@ -30,3 +30,6 @@ My linked list have the following methods :
 * includes : checks if an element exists in the list and returns a boolean (True/Flase)
 * get : returns the value of an element at a given index
 * erase : removes an element at a given index
+
+## Whiteboard 
+![img](../../../assests/linked_list_insertoin.jpg)
