@@ -68,6 +68,7 @@ class LinkedList:
         prev_node.next=new_node
 
 
+
     def length(self):
         current = self.head
         total = 0
@@ -124,3 +125,4 @@ if __name__ == "__main__":
     print(my_list.display())
     my_list.insert_before(my_list.head.next.next.next,'a')
     print(my_list.display())
+
