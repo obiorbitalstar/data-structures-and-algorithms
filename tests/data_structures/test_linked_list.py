@@ -114,3 +114,41 @@ def test_insert_after_last_node(data):
     actual = data['list'].display()
     expected = [1,2,3]
     assert expected == actual
+def test_k_is_greater_than_list_length(data):
+    data['list'].appened(1)
+    data['list'].appened(2)
+    data['list'].appened(3)
+    data['list'].appened(5)
+    actual = data['list'].kth_from_end(7)
+    expected = '7 is not in the range of the list'
+    assert expected == actual
+def test_k_has_same_length_of_list(data):
+    data['list'].appened(1)
+    data['list'].appened(2)
+    data['list'].appened(3)
+    data['list'].appened(5)
+    actual = data['list'].kth_from_end(4)
+    expected = 5
+    assert expected == actual
+def test_k_is_negative(data):
+    data['list'].appened(1)
+    data['list'].appened(2)
+    actual = data['list'].kth_from_end(-1)
+    expected = '-1 is not in the range of the list'
+    assert expected == actual
+def test_list_length_is_one(data):
+    data['list'].appened(1)
+    actual = data['list'].kth_from_end(0)
+    expected = 1
+    assert expected == actual
+def test_happy_path(data):
+    data['list'].appened(1)
+    data['list'].appened(2)
+    data['list'].appened(3)
+    data['list'].appened(4)
+    data['list'].appened(5)
+    data['list'].appened(6)
+    actual = data['list'].kth_from_end(3)
+    expected =3
+
+    assert expected == actual

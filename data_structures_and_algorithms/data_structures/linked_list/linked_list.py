@@ -92,9 +92,9 @@ class LinkedList:
         current_index = 0
         current_node =self.head
         while True:
-            current_node=current_node.next
             if current_index == index:return current_node.data
             current_index+=1
+            current_node=current_node.next
 
     def erase(self, index):
         if index >= self.length():
@@ -109,7 +109,28 @@ class LinkedList:
                 last_node.next = current_node.next
                 return
             current_index += 1
-
+    def reverse_list(self):
+        prev = None
+        cure = self.head
+        while cure:
+            nxt = cure.next
+            cure.next=prev
+            prev = cure
+            cure = nxt
+        self.head = prev
+    # @staticmethod
+    def kth_from_end(self,index):
+        elements = []
+        current = self.head
+        while current:
+            elements.append(current.data)
+            current = current.next
+        if index > len(elements) or index <= -1:
+            return f"{index} is not in the range of the list"
+        elif index == len(elements):
+            return elements[index-1]
+        elements.reverse()
+        return elements[index]
 
 if __name__ == "__main__":
     my_list = LinkedList()
@@ -119,8 +140,5 @@ if __name__ == "__main__":
     my_list.appened(4)
     my_list.appened(5)
     print(my_list.display())
-    y= my_list.head.next.next.next
-    my_list.insert_after(y,6)
-    print(my_list.display())
-    my_list.insert_before(my_list.head.next.next.next,'a')
-    print(my_list.display())
+    print(my_list.kth_from_end(9))
+
