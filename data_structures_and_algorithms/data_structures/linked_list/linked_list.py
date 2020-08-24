@@ -1,5 +1,5 @@
 class Node():
-    def __init__(self, data=None):
+    def __init__(self, data):
         self.data = data
         self.next = None
 
@@ -11,7 +11,7 @@ class LinkedList:
 
     # put your LinkedList implementation here
     def __init__(self):
-        self.head = Node()
+        self.head = None
 
     def __str__(self):
         elements = []
@@ -23,22 +23,57 @@ class LinkedList:
     def display(self):
         elements = []
         current = self.head
-        while current.next != None:
-            current = current.next
+        while current:
             elements.append(current.data)
+            current = current.next
         return elements
 
-    def insert(self, data):
+    def appened(self, data):
         new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+            return
+
         current = self.head
-        while current.next != None:
+        while current.next:
             current = current.next
         current.next = new_node
+    def insert_before(self,next_node,data):
+
+        if not next_node:
+            print('node dose not exist')
+            return
+        new_node=Node(data)
+        current_node=self.head
+        if next_node == current_node:
+            new_node = Node(data)
+            new_node.next = self.head
+            self.head = new_node
+            return
+
+        while current_node:
+            if current_node.next==next_node:
+                new_node.next=current_node.next
+                current_node.next=new_node
+                return
+            else:
+                current_node=current_node.next
+
+    def insert_after(self, prev_node,data):
+        if not prev_node:
+            print('The previous node is not in the list')
+            return
+        new_node = Node(data)
+        new_node.next = prev_node.next
+        prev_node.next=new_node
+
+
 
     def length(self):
         current = self.head
         total = 0
-        while current.next != None:
+
+        while current:
             total += 1
             current = current.next
         return total
@@ -79,12 +114,15 @@ class LinkedList:
 
 if __name__ == "__main__":
     my_list = LinkedList()
-    my_list.insert(1)
-    my_list.insert(2)
-    my_list.insert(3)
-    my_list.insert(4)
-    my_list.insert(5)
-    print(my_list.includes(3))
-    print(my_list.includes(7))
-    my_list.__str__()
-    print(my_list.get(0))
+    my_list.appened(1)
+    my_list.appened(2)
+    my_list.appened(3)
+    my_list.appened(4)
+    my_list.appened(5)
+    print(my_list.display())
+    y= my_list.head.next.next.next
+    my_list.insert_after(y,6)
+    print(my_list.display())
+    my_list.insert_before(my_list.head.next.next.next,'a')
+    print(my_list.display())
+
