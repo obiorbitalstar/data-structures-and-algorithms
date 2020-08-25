@@ -31,7 +31,7 @@ My linked list have the following methods :
 * get : returns the value of an element at a given index
 * erase : removes an element at a given index
 
-## Whiteboard 
+## Whiteboard
 ![img](../../../assests/linked_list_insertoin.jpg)
 ![img](../../../assests/kth_from_end.jpg)
-
+![img](../../../assests/zip_lists.jpg)
