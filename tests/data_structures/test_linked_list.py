@@ -5,7 +5,8 @@ import pytest
 @pytest.fixture
 def data():
     linked_list = LinkedList()
-    return {'list': linked_list}
+    linked_list2=LinkedList()
+    return {'list': linked_list,'list2':linked_list2}
 
 
 def test_empty(data):
@@ -16,7 +17,7 @@ def test_empty(data):
 
 
 def test_insert(data):
-    actual = data['list'].appened(1)  
+    actual = data['list'].appened(1)
     expected = 1
     assert expected == data['list'].length()
 
@@ -155,4 +156,31 @@ def test_happy_path(data):
     actual = data['list'].kth_from_end(3)
     expected =3
 
+    assert expected == actual
+def test_zip_list_correct_input_and_output(data):
+    data['list'].appened(1)
+    data['list'].appened(3)
+    data['list'].appened(2)
+
+    data['list2'].appened(5)
+    data['list2'].appened(9)
+
+    data['list'].zip_lists(data['list2'])
+    actual = data['list'].display()
+    expected = [1, 5, 3, 9, 2]
+    assert expected ==actual
+
+def test_zip_lists_one_empty_list(data):
+    data['list'].appened(1)
+    data['list'].appened(3)
+    data['list'].appened(2)
+    data['list'].zip_lists(data['list2'])
+    actual = data['list'].display()
+    expected =[1,3,2]
+    assert expected == actual
+
+def test_zip_lists_both_empty(data):
+    data['list'].zip_lists(data['list2'])
+    actual =  data['list'].display()
+    expected = []
     assert expected == actual

@@ -20,6 +20,7 @@ class LinkedList:
             current = current.next
             elements.append(current.data)
         print(''.join("{} -> ".format(*k) for k in enumerate(elements))+'NULL')
+
     def display(self):
         elements = []
         current = self.head
@@ -38,13 +39,14 @@ class LinkedList:
         while current.next:
             current = current.next
         current.next = new_node
-    def insert_before(self,next_node,data):
+
+    def insert_before(self, next_node, data):
 
         if not next_node:
             print('node dose not exist')
             return
-        new_node=Node(data)
-        current_node=self.head
+        new_node = Node(data)
+        current_node = self.head
         if next_node == current_node:
             new_node = Node(data)
             new_node.next = self.head
@@ -52,22 +54,20 @@ class LinkedList:
             return
 
         while current_node:
-            if current_node.next==next_node:
-                new_node.next=current_node.next
-                current_node.next=new_node
+            if current_node.next == next_node:
+                new_node.next = current_node.next
+                current_node.next = new_node
                 return
             else:
-                current_node=current_node.next
+                current_node = current_node.next
 
-    def insert_after(self, prev_node,data):
+    def insert_after(self, prev_node, data):
         if not prev_node:
             print('The previous node is not in the list')
             return
         new_node = Node(data)
         new_node.next = prev_node.next
-        prev_node.next=new_node
-
-
+        prev_node.next = new_node
 
     def length(self):
         current = self.head
@@ -86,16 +86,18 @@ class LinkedList:
             else:
                 current_node = current_node.next
         return False
-    def get(self,index):
+
+    def get(self, index):
         if index == self.length():
             raise Exception("Index is out of range")
             return None
         current_index = 0
-        current_node =self.head
+        current_node = self.head
         while True:
-            if current_index == index:return current_node.data
-            current_index+=1
-            current_node=current_node.next
+            if current_index == index:
+                return current_node.data
+            current_index += 1
+            current_node = current_node.next
 
     def erase(self, index):
         if index >= self.length():
@@ -110,17 +112,19 @@ class LinkedList:
                 last_node.next = current_node.next
                 return
             current_index += 1
+
     def reverse_list(self):
         prev = None
         cure = self.head
         while cure:
             nxt = cure.next
-            cure.next=prev
+            cure.next = prev
             prev = cure
             cure = nxt
         self.head = prev
     # @staticmethod
-    def kth_from_end(self,index):
+
+    def kth_from_end(self, index):
         elements = []
         current = self.head
         while current:
@@ -133,15 +137,47 @@ class LinkedList:
         elements.reverse()
         return elements[index]
 
+    def zip_lists(self, llist):
+        p = self.head
+        q = llist.head
+        s = None
+
+        if not p:
+            return q
+        if not q:
+            return p
+
+        if p and q:
+
+            s = p
+            p = s.next
+
+            new_head = s
+        while p and q:
+            s.next = q
+            s = q
+            q = s.next
+            s.next = p
+            s = p
+            p = s.next
+
+        if not p:
+            s.next = q
+        if not q:
+            s.next = p
+        return new_head
+
+
 if __name__ == "__main__":
-    my_list = LinkedList()
-    my_list.appened(1)
-    my_list.appened(2)
-    my_list.appened(3)
-    my_list.appened(4)
-    my_list.appened(5)
-    print(my_list.display())
-    print(my_list.kth_from_end(9))
+    list_1 = LinkedList()
+    list_2 = LinkedList()
 
-  
+    list_1.appened(1)
+    list_1.appened(3)
+    list_1.appened(2)
 
+    list_2.appened(5)
+    list_2.appened(9)
+
+    list_1.zip_lists(list_2)
+    print(list_1.display())
