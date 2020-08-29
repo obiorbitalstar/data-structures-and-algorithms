@@ -1,4 +1,5 @@
 from data_structures_and_algorithms.data_structures.linked_list.linked_list import LinkedList
+from data_structures_and_algorithms.challenges.ll_zip.ll_zip import zip_lists
 import pytest
 
 
@@ -165,8 +166,8 @@ def test_zip_list_correct_input_and_output(data):
     data['list2'].appened(5)
     data['list2'].appened(9)
 
-    data['list'].zip_lists(data['list2'])
-    actual = data['list'].display()
+
+    actual = zip_lists(data['list'],data['list2'])
     expected = [1, 5, 3, 9, 2]
     assert expected ==actual
 
@@ -174,13 +175,13 @@ def test_zip_lists_one_empty_list(data):
     data['list'].appened(1)
     data['list'].appened(3)
     data['list'].appened(2)
-    data['list'].zip_lists(data['list2'])
-    actual = data['list'].display()
+
+    actual = zip_lists(data['list'],data['list2'])
     expected =[1,3,2]
     assert expected == actual
 
 def test_zip_lists_both_empty(data):
-    data['list'].zip_lists(data['list2'])
-    actual =  data['list'].display()
+
+    actual = zip_lists(data['list'],data['list2'])
     expected = []
     assert expected == actual

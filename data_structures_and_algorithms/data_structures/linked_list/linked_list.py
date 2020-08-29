@@ -137,35 +137,7 @@ class LinkedList:
         elements.reverse()
         return elements[index]
 
-    def zip_lists(self, llist):
-        p = self.head
-        q = llist.head
-        s = None
 
-        if not p:
-            return q
-        if not q:
-            return p
-
-        if p and q:
-
-            s = p
-            p = s.next
-
-            new_head = s
-        while p and q:
-            s.next = q
-            s = q
-            q = s.next
-            s.next = p
-            s = p
-            p = s.next
-
-        if not p:
-            s.next = q
-        if not q:
-            s.next = p
-        return new_head
 
 
 if __name__ == "__main__":
