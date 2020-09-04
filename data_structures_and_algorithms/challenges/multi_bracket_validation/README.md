@@ -12,6 +12,6 @@ not sure of the BigO of this one
 ![img](../../../assests/multi_bracket_validation.jpg)
 
 
-
+> the code was updated from the code challenge review
 
 
