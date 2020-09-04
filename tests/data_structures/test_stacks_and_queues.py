@@ -17,8 +17,8 @@ def test_stack_push_multiple_elements(data):
     data['stack'].push(1)
     data['stack'].push(2)
     data['stack'].push(3)
-    actual= data['stack'].elements
-    expected = [1,2,3]
+    actual= data['stack'].__str__()
+    expected = '3-> 2-> 1-> None'
     assert expected == actual
 def test_stack_pop_one_element(data):
     data['stack'].push(1)

@@ -1,48 +1,74 @@
 class Node:
+    """
+    to initiate a node
+    """
     def __init__(self, data):
         self.data = data
         self.next = None
 
 
 class Stack:
-
+    """
+    You just created a new stack
+    """
     def __init__(self):
         self.top = None
-        self.elements=[]
+
 
     def push(self, data):
-        if self.top == None:
-            self.top = Node(data)
-            self.elements.append(data)
-        else:
-            new_node = Node(data)
-            self.top.next = new_node
-            self.top = new_node
-            self.elements.append(new_node.data)
+        """
+        Add a new value to the stack
+        """
+        node = Node(data)
+        temp = self.top
+        self.top = node
+        self.top.next = temp
 
     def pop(self):
-        try:
+
+        """
+        Remove a value from the top of the stack
+        """
+
+        if self.top:
             popped = self.top
             self.top = self.top.next
-            popped.next = None
             return popped.data
-        except AttributeError as e:
-            return 'Stack is empty'
+        else:
+            return f"Stack is empty"
+
 
     def peek(self):
+        """
+        This will show the current top of the stack
+        """
         try:
             return self.top.data
         except AttributeError as e:
             return "Stack is empty"
 
     def is_empty(self):
-        if self.top == None:
-            return True
-        else:
+        """
+        to check if the stack is empty or not
+        """
+        if self.top:
             return False
-    # def display(self):
+        else :
+            return True
 
-    #     return elements
+    def __str__(self):
+        """
+        Show the stack elements
+        """
+        pointer = self.top
+        elements = ''
+        while pointer:
+            elements += f"{pointer.data}-> "
+            pointer = pointer.next
+        elements += f"{pointer}"
+        return elements
+
+
 class Queue:
     def __init__(self):
         self.front = None
@@ -65,6 +91,8 @@ class Queue:
             self.front = temp.next
             if self.front == None:
                self.rear = None
+            self.elements.pop(0)
+            return temp.data
         except AttributeError as e:
             return "Queue is empty"
 
@@ -74,6 +102,19 @@ class Queue:
         except AttributeError as e:
             return "Queue is empty"
 
+
+    def __str__(self):
+        """
+        Show the queue elements
+        """
+        pointer = self.front
+        elements = ''
+        while pointer:
+            elements += f"{pointer.data}-> "
+            pointer = pointer.next
+        elements += f"{pointer}"
+        return elements
+
     def is_empty(self):
        if not self.front:
            return True
@@ -82,27 +123,29 @@ class Queue:
 
 
 if __name__ == "__main__":
-    new_stack = Stack()
-    new_stack.push(1)
-    new_stack.push(2)
-    new_stack.push(3)
-    new_stack.push(4)
-    print(new_stack.elements)
-    print(new_stack.peek())
-    print(new_stack.pop())
-    # print(new_stack.peek())
-    # print(new_stack.pop())
-    # print(new_stack.peek())
-    # print(new_stack.is_empty())
-    # q = Queue()
-    # q.enqueue(10)
-    # q.enqueue(20)
-    # q.dequeue()
-    # q.dequeue()
-    # q.enqueue(30)
-    # q.enqueue(40)
-    # q.enqueue(50)
-    # print(q.dequeue())
-    # print(q.peek())
-    # print("Queue Front " + str(q.front.data))
-    # print("Queue Rear " + str(q.rear.data))
+    # new_stack = Stack()
+    # new_stack.push(1)
+    # new_stack.push(2)
+    # new_stack.push(3)
+    # new_stack.push(4)
+    # # print(new_stack.elements)
+    # # print(new_stack.peek())
+    # print(new_stack.__str__())
+    # new_stack.pop()
+    # new_stack.pop()
+    # print(new_stack.__str__())
+    new_queue=Queue()
+    new_queue.enqueue(1)
+    new_queue.enqueue(2)
+    new_queue.enqueue(3)
+    print(new_queue.__str__())
+    print(new_queue.dequeue())
+    print(new_queue.__str__())
+    print(new_queue.dequeue())
+    print(new_queue.__str__())
+    print(new_queue.dequeue())
+    print(new_queue.__str__())
+    new_queue.dequeue()
+    new_queue.dequeue()
+    print(new_queue.dequeue())
+    print(new_queue.__str__())
