@@ -6,8 +6,8 @@ def test_happy_path():
     pseudo_q.enqueue(15)
     pseudo_q.enqueue(10)
     pseudo_q.enqueue(5)
-    actual = pseudo_q.elements
-    expected = [5,10,15,20]
+    actual = pseudo_q.en.__str__()
+    expected = '5-> 10-> 15-> 20-> None'
     assert expected == actual
 
 def test_failure_case():
