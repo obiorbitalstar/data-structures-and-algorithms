@@ -40,34 +40,48 @@ class LinkedList:
             current = current.next
         current.next = new_node
 
-    def insert_before(self, next_node, data):
+    def insert_before(self, data, new_val):
 
-        if not next_node:
-            print('node dose not exist')
-            return
-        new_node = Node(data)
-        current_node = self.head
-        if next_node == current_node:
-            new_node = Node(data)
-            new_node.next = self.head
+        new_node = Node(new_val)
+        current = self.head
+        if not self.head:
             self.head = new_node
-            return
-
-        while current_node:
-            if current_node.next == next_node:
-                new_node.next = current_node.next
-                current_node.next = new_node
+        else:
+            if self.head.data == data:
+                previous_node = self.head
+                self.head = new_node
+                new_node.next = previous_node
                 return
             else:
-                current_node = current_node.next
+                current = self.head
+            while current.next != None:
+                if current.next.data == data:
+                    previous_node = current.next
+                    current.next = new_node
+                    new_node.next = previous_node
+                    return
+                else:
+                    current = current.next
 
-    def insert_after(self, prev_node, data):
-        if not prev_node:
-            print('The previous node is not in the list')
-            return
-        new_node = Node(data)
-        new_node.next = prev_node.next
-        prev_node.next = new_node
+
+
+    def insert_after(self,data,new_val):
+
+        new_node = Node(new_val)
+        current = self.head
+        if not self.head:
+                self.head = new_node
+        else:
+            current = self.head
+            while current.next != None:
+                if current.next.data == data:
+                    current = current.next
+                    previous_node = current.next
+                    current.next = new_node
+                    new_node.next = previous_node
+                    return
+                else:
+                    current = current.next
 
     def length(self):
         current = self.head

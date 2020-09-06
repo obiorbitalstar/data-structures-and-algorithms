@@ -1,3 +1,5 @@
+from accessify import private
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -6,8 +8,8 @@ class Node:
 
 
 class BinaryTree:
-    def __init__(self, root=None):
-        self.root = Node(root)
+    def __init__(self, root_value=None):
+        self.root = Node(root_value)
 
     def print_tree(self, traversal_type):
         if traversal_type == "preorder":
@@ -16,13 +18,14 @@ class BinaryTree:
             return self.in_order(self.root, "")
         elif traversal_type == "postorder":
             return self.post_order(self.root, "")
-
         else:
             print("Traversal type " + str(traversal_type) + " is not supported.")
             return False
 
     def pre_order(self, start, traversal):
-        """Root->Left->Right"""
+        """
+        Root->Left->Right
+        """
         if start:
             traversal += (str(start.value) + "-")
             traversal = self.pre_order(start.left, traversal)
@@ -59,39 +62,61 @@ class BinaryTree:
                 return max
 
 
+    # def protected _only_here(self):
+    #     pass
 
-class BinarySearchTree:
+
+class BinarySearchTree(BinaryTree):
     def __init__(self):
         self.root = None
 
-    def add(self, value):
-        if self.root is None:
-            self.root = Node(value)
-        else:
-            self._add(value, self.root)
 
-    def _add(self, value, cur_node):
-        if value < cur_node.value:
-            if cur_node.left is None:
-                cur_node.left = Node(value)
+    def add(self, value):
+        def _add(value, cur_node):
+            if not cur_node:
+                self.root = Node(value)
+            elif value < cur_node.value:
+                if cur_node.left is None:
+                    cur_node.left = Node(value)
+                else:
+                    _add(value, cur_node.left)
+            elif value > cur_node.value:
+                if cur_node.right is None:
+                    cur_node.right = Node(value)
+                else:
+                    _add(value, cur_node.right)
             else:
-                self._add(value, cur_node.left)
-        elif value > cur_node.value:
-            if cur_node.right is None:
-                cur_node.right = Node(value)
-            else:
-                self._add(value, cur_node.right)
-        else:
-            print("Value already exists")
+                print("Value already exists")
+        return _add(value, self.root)
+
+
+    # def add(self, value):
+    #     if self.root is None:
+    #         self.root = Node(value)
+    #     else:
+    #         self._add(value, self.root)
+
+    # def _add(self, value, cur_node):
+    #     if value < cur_node.value:
+    #         if cur_node.left is None:
+    #             cur_node.left = Node(value)
+    #         else:
+    #             self._add(value, cur_node.left)
+    #     elif value > cur_node.value:
+    #         if cur_node.right is None:
+    #             cur_node.right = Node(value)
+    #         else:
+    #             self._add(value, cur_node.right)
+    #     else:
+    #         print("Value already exists")
 
     def contains(self, value):
         if self.root:
             is_found = self._contains(value, self.root)
             if is_found:
                 return True
-            return False
-        else:
-            return None
+        return False
+
 
     def _contains(self, value, cur_node):
         if value > cur_node.value and cur_node.right:
@@ -101,7 +126,23 @@ class BinarySearchTree:
         if value == cur_node.value:
             return True
 
+    def _print(self):
+        self.__print()
+
+    def __print(self):
+        print("This is a semi private method")
+
+    @private
+    def _private_print(self):
+        print("Another way to privately define a method")
+
+    def _print_diff_scope(self):
+        def _internally_printed():
+            print("Internally printed")
+
+
 if __name__ == "__main__":
+
 
     tree = BinaryTree()
     # tree.root.left = Node(9)
@@ -110,10 +151,12 @@ if __name__ == "__main__":
     # tree.root.left.right = Node(5)
     # tree.root.right.left = Node(6)
     # tree.root.right.right = Node(7)
+ 
 
     # print(tree.print_tree("preorder"))
     # print(tree.print_tree("inorder"))
     # print(tree.print_tree("postorder"))
+
     print(tree.find_maximum_value())
     # bst = BinarySearchTree()
     # bst.add(1)
@@ -121,3 +164,4 @@ if __name__ == "__main__":
     # bst.add(3)
     # bst.add(4)
     # print(bst.contains(3))
+
