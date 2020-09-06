@@ -47,6 +47,20 @@ class BinaryTree:
             traversal = self.post_order(start.right, traversal)
             traversal += (str(start.value) + "-")
         return traversal
+    def find_maximum_value(self):
+
+            lol = self.print_tree('preorder')
+            if lol == None or lol == "None-":
+                return "Value dose not exist in the tree"
+            else:
+                x= lol.split('-')
+                y= x.remove('')
+                max = 0
+                for i in range(len(x)):
+                    if int(x[i]) > max:
+                        max = int(x[i])
+                return max
+
 
     # def protected _only_here(self):
     #     pass
@@ -129,39 +143,25 @@ class BinarySearchTree(BinaryTree):
 
 if __name__ == "__main__":
 
-    tree = BinaryTree(1)
-    # tree = BinaryTree()
-    # tree.root.value = Node(1)
 
-    tree.root.left = Node(2)
-    tree.root.right = Node(3)
-    tree.root.left.left = Node(4)
-    tree.root.left.right = Node(5)
-    tree.root.right.left = Node(6)
-    tree.root.right.right = Node(7)
-
-    print(tree.pre_order(tree.root, ""))
+    tree = BinaryTree()
+    # tree.root.left = Node(9)
+    # tree.root.right = Node(3)
+    # tree.root.left.left = Node(4)
+    # tree.root.left.right = Node(5)
+    # tree.root.right.left = Node(6)
+    # tree.root.right.right = Node(7)
+ 
 
     # print(tree.print_tree("preorder"))
     # print(tree.print_tree("inorder"))
     # print(tree.print_tree("postorder"))
 
-    bst = BinarySearchTree()
-    bst.add(1)
-    bst.add(2)
-    bst.add(3)
-    bst.add(4)
-    print(bst.contains(3))
-    print(bst.contains(5))
+    print(tree.find_maximum_value())
+    # bst = BinarySearchTree()
+    # bst.add(1)
+    # bst.add(2)
+    # bst.add(3)
+    # bst.add(4)
+    # print(bst.contains(3))
 
-    bst_empty = BinarySearchTree()
-    print(bst_empty.contains(5))
-
-    bst._print()
-
-    # bst._print_diff_scope()._internally_printed() # Error, closures
-
-    bst._BinarySearchTree__print() # A HACK
-
-    # Still private
-    # bst._BinarySearchTree__private_print()

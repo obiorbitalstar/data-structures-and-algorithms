@@ -15,7 +15,7 @@ Insert		O(log n)	O(log n)
 * pre_order: prints the content of the binary tree in preordered fashion (Root->Left->Right)
 * in_order:print the content of the binary tree in inordered fashion (Left->Root->Right)
 * post_order: prints the content of the binary tree in post order fashion (Left->Right->Root)
-
+* find_maximum_value: returns the max value in the tree
 ### BinarySearchTree class:
 * add(): adds a new node to the binary tree in the correct postion
 
