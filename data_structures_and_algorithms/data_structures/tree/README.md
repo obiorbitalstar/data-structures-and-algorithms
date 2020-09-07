@@ -20,3 +20,8 @@ Insert		O(log n)	O(log n)
 * add(): adds a new node to the binary tree in the correct postion
 
 * contains(): checks if a value is in the tree and returns true of false based on that (true if the value is there and false if its not)
+
+
+## Solutions:
+
+![img](../../../assests/bredth_first.jpg)

@@ -1,3 +1,21 @@
+class Queue:
+    def __init__(self):
+        self.items =[]
+    def enqueue(self,item):
+        self.items.insert(0,item)
+    def dequeue(self):
+        if not self.is_empty():
+            return self.items.pop()
+    def is_empty(self):
+        return len(self.items) ==0
+    def peek(self):
+        if not self.is_empty():
+            return self.items[-1].value
+    def __len__(self):
+        return self.size()
+    def size(self):
+        return len(self.items)
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -16,7 +34,8 @@ class BinaryTree:
             return self.in_order(self.root, "")
         elif traversal_type == "postorder":
             return self.post_order(self.root, "")
-
+        elif traversal_type == 'breadthfirst':
+            return self.breadth_first(self.root)
         else:
             print("Traversal type " + str(traversal_type) + " is not supported.")
             return False
@@ -45,7 +64,7 @@ class BinaryTree:
             traversal += (str(start.value) + "-")
         return traversal
     def find_maximum_value(self):
-
+            """ return the max value inside a tree """
             lol = self.print_tree('preorder')
             if lol == None or lol == "None-":
                 return "Value dose not exist in the tree"
@@ -57,8 +76,20 @@ class BinaryTree:
                     if int(x[i]) > max:
                         max = int(x[i])
                 return max
-
-
+    def breadth_first(self,start):
+            if start is None:
+                return
+            queue = Queue()
+            queue.enqueue(start)
+            traversal = []
+            while len(queue)>0:
+                traversal.append(queue.peek())
+                node = queue.dequeue()
+                if node.left:
+                    queue.enqueue(node.left)
+                if node.right:
+                    queue.enqueue(node.right)
+            return traversal
 
 class BinarySearchTree:
     def __init__(self):
@@ -103,14 +134,14 @@ class BinarySearchTree:
 
 if __name__ == "__main__":
 
-    tree = BinaryTree()
-    # tree.root.left = Node(9)
-    # tree.root.right = Node(3)
-    # tree.root.left.left = Node(4)
-    # tree.root.left.right = Node(5)
-    # tree.root.right.left = Node(6)
-    # tree.root.right.right = Node(7)
-
+    tree = BinaryTree(1)
+    tree.root.left = Node(2)
+    tree.root.right = Node(3)
+    tree.root.left.left = Node(4)
+    tree.root.left.right = Node(5)
+    tree.root.right.left = Node(6)
+    tree.root.right.right = Node(7)
+    print(tree.print_tree('breadthfirst'))
     # print(tree.print_tree("preorder"))
     # print(tree.print_tree("inorder"))
     # print(tree.print_tree("postorder"))
