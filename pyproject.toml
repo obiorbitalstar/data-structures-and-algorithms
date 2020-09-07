@@ -8,6 +8,7 @@ authors = ["obiorbitalstar <obiorbitalstar@gmail.com>"]
 python = "^3.8"
 pytest = "^6.0.1"
 pytest-watch = "^4.2.0"
+accessify = "^0.3.1"
 
 [tool.poetry.dev-dependencies]
 autopep8 = "^1.5.4"

@@ -1,5 +1,13 @@
 [[package]]
 category = "main"
+description = "Python design kit: interfaces, declared exception throws, class members accessibility levels (private and protected methods for humans)."
+name = "accessify"
+optional = false
+python-versions = "*"
+version = "0.3.1"
+
+[[package]]
+category = "main"
 description = "Atomic file writes."
 marker = "sys_platform == \"win32\""
 name = "atomicwrites"
@@ -188,11 +196,13 @@ pathtools = ">=0.1.1"
 watchmedo = ["PyYAML (>=3.10)", "argh (>=0.24.1)"]
 
 [metadata]
-content-hash = "1b060fffde9f32db93211c8ecf86580331fab2d41801f03d12ae7ee9a9c47bbe"
-lock-version = "1.0"
+content-hash = "4d8b61feb8f4c55f86ba4bfebd7c058c9a5a451bb976c43a28986d903767a700"
 python-versions = "^3.8"
 
 [metadata.files]
+accessify = [
+    {file = "accessify-0.3.1.tar.gz", hash = "sha256:471905fd15e128c51e37b240804bb2e44f0be887ba105cacf90ef6725b26278a"},
+]
 atomicwrites = [
     {file = "atomicwrites-1.4.0-py2.py3-none-any.whl", hash = "sha256:6d1784dea7c0c8d4a5172b6c620f40b6e4cbfdf96d783691f2e1302a7b88e197"},
     {file = "atomicwrites-1.4.0.tar.gz", hash = "sha256:ae70396ad1a434f9c7046fd2dd196fc04b12f9e91ffb859164193be8b6168a7a"},
