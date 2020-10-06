@@ -184,7 +184,7 @@ if __name__ == "__main__":
     print(tree.print_tree('breadthfirst'))
 
     # print(tree.print_tree("preorder"))
-    # print(tree.print_tree("inorder"))
+    print(tree.print_tree("inorder"))
     # print(tree.print_tree("postorder"))
 
     print(tree.find_maximum_value())
